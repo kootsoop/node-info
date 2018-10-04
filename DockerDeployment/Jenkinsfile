@@ -1,0 +1,19 @@
+pipeline {
+    agent none
+    options {
+        timeout(time: 1, unit: 'DAYS')
+        disableConcurrentBuilds()
+    }
+    stages {
+        stage("Init") {
+            agent any
+            steps { initialize() }
+        }
+
+    }
+}
+def initialize() {
+    env.SYSTEM_NAME = "DSO"
+    env.AWS_REGION = "us-east-1"
+    showEnvironmentVariables()
+}
