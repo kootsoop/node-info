@@ -10,6 +10,10 @@ pipeline {
             agent any
             steps { initialize() }
         }
+        stage("Check for Docker") {
+            agent any
+            steps { checkDocker() }
+        }
     }
 }
 def initialize() {
@@ -20,4 +24,7 @@ def initialize() {
 def showEnvironmentVariables() {
     sh 'env | sort > env.txt'
     sh 'cat env.txt'
+}
+def checkDocker() {
+    sh 'docker -v'
 }
