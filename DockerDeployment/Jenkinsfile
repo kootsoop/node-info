@@ -17,6 +17,8 @@ pipeline {
     }
 }
 def initialize() {
+    def dockerHome = tool 'myDocker'
+    env.PATH = "${dockerHome}/bin:${env.PATH}"
     env.SYSTEM_NAME = "DSO"
     env.AWS_REGION = "us-east-1"
     showEnvironmentVariables()
