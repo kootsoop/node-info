@@ -14,10 +14,15 @@ pipeline {
             agent any
             steps { checkDocker() }
         }
+        stage("Build node-info") {
+            agent any
+            steps { buildNodeInfo() }
+        }
     }
 }
 def initialize() {
     def dockerHome = tool 'myDocker'
+    def mvnHome = tool 'M3'
     env.PATH = "${dockerHome}/bin:${env.PATH}"
     env.SYSTEM_NAME = "DSO"
     env.AWS_REGION = "us-east-1"
@@ -30,4 +35,7 @@ def showEnvironmentVariables() {
 def checkDocker() {
     sh 'docker -v > docker.txt'
     sh 'cat docker.txt'
+}
+def buildNodeInfo() {
+    sh "'${mvnHome}/bin/mvn' clean package"
 }
