@@ -26,5 +26,6 @@ def showEnvironmentVariables() {
     sh 'cat env.txt'
 }
 def checkDocker() {
-    sh 'docker -v'
+    sh 'docker -v > docker.txt'
+    sh 'cat docker.txt'
 }
