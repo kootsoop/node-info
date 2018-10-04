@@ -1,3 +1,4 @@
+/* */
 pipeline {
     agent none
     options {
@@ -9,11 +10,14 @@ pipeline {
             agent any
             steps { initialize() }
         }
-
     }
 }
 def initialize() {
     env.SYSTEM_NAME = "DSO"
     env.AWS_REGION = "us-east-1"
     showEnvironmentVariables()
+}
+def showEnvironmentVariables() {
+    sh 'env | sort > env.txt'
+    sh 'cat env.txt'
 }
