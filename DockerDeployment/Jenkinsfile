@@ -22,7 +22,6 @@ pipeline {
 }
 def initialize() {
     def dockerHome = tool 'myDocker'
-    def mvnHome = tool 'M3'
     env.PATH = "${dockerHome}/bin:${env.PATH}"
     env.SYSTEM_NAME = "DSO"
     env.AWS_REGION = "us-east-1"
@@ -37,5 +36,6 @@ def checkDocker() {
     sh 'cat docker.txt'
 }
 def buildNodeInfo() {
+    def mvnHome = tool 'M3'
     sh "'${mvnHome}/bin/mvn' clean package"
 }
