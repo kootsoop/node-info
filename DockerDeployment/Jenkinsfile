@@ -38,7 +38,7 @@ def showEnvironmentVariables() {
 def checkDocker() {
     sh 'docker -v > docker.txt'
     sh 'cat docker.txt'
-}-
+}
 def buildNodeInfo() {
     def mvnHome = tool 'M3'
     sh "'${mvnHome}/bin/mvn' clean package"
