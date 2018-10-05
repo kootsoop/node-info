@@ -38,13 +38,13 @@ def showEnvironmentVariables() {
 def checkDocker() {
     sh 'docker -v > docker.txt'
     sh 'cat docker.txt'
-}
+}-
 def buildNodeInfo() {
     def mvnHome = tool 'M3'
     sh "'${mvnHome}/bin/mvn' clean package"
 }
 def runWithDocker() {
     sh 'docker build --tag=node-info DockerDeployment'
-    sh 'docker run -p 8888:8080 node-info'
+    sh 'docker run -p 8888:8080 -d --node-info'
     sh 'curl http://localhost:8080/node-info'
 }
