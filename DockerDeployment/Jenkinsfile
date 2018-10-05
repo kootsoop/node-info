@@ -48,5 +48,5 @@ def runWithDocker() {
     sh 'docker run -p 8888:8080 -d --name node-info-container node-info'
     sh 'curl http://localhost:8888/node-info'
     sh 'docker stop node-info-container'
-
+    sh 'docker rm -f node-info-container'
 }
