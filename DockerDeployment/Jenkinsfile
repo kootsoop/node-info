@@ -25,7 +25,7 @@ pipeline {
     }
     post {
         always {
-            sh 'docker stop node-info-container' || echo "No docker running"
+            sh 'docker stop node-info-container'
             sh 'docker rm -f node-info-container'
         }
     }
