@@ -18,7 +18,7 @@ pipeline {
             agent any
             steps { buildNodeInfo() }
         }
-        stage("Build Dockr") {
+        stage("Build Docker Image") {
             agent any
             steps { runWithDocker() }
         }
