@@ -46,7 +46,7 @@ def buildNodeInfo() {
 def runWithDocker() {
     sh 'docker build --tag=node-info DockerDeployment'
     sh 'docker run -p 8888:8080 -d --name node-info-container node-info'
-    sh 'curl http://localhost:8888/node-info'
+    sh 'curl http://192.168.2.112:8888/node-info/'
     sh 'docker stop node-info-container'
     sh 'docker rm -f node-info-container'
 }
