@@ -44,7 +44,6 @@ def buildNodeInfo() {
     sh "'${mvnHome}/bin/mvn' clean package"
 }
 def runWithDocker() {
-    sh 'dockerd'
     sh 'docker build --tag=node-info DockerDeployment'
     sh 'docker run -it -p 8080:8080 node-info'
     sh 'curl http://localhost:8080/node-info'
