@@ -17,6 +17,10 @@ It should be running on WildFly/JBoss EAP applciation servers.
     Java Runtime: OpenJDK Runtime Environment 1.7.0_45-mockbuild_2013_10_22_03_37-b00
     OS: Linux amd64 3.13.6-200.fc20.x86_64
 
+## Additions
+
+A Wildfly docker deployment has been added, as has a Jenkinsfile to build this.
+
 ## License
 
 All files listed in this repository are licensed under [MIT license](http://opensource.org/licenses/MIT).
