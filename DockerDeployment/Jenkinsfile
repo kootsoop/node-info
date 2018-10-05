@@ -22,6 +22,10 @@ pipeline {
             agent any
             steps { runWithDocker() }
         }
+        stage("doTests") {
+            agent any
+            steps { runUnitTests() }
+        }
     }
     post {
         always {
@@ -53,5 +57,8 @@ def runWithDocker() {
     sh 'docker build --tag=node-info DockerDeployment'
     sh 'docker run -p 8888:8080 -d --name node-info-container node-info'
     sleep 30
-    sh 'curl http://192.168.2.112:8888/node-info/'
+    sh 'curl -s http://192.168.2.112:8888/node-info/'
+}
+def runUnitTests() {
+    junit
 }
