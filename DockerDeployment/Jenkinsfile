@@ -1,6 +1,6 @@
 /* */
 pipeline {
-    agent none
+    agent any
     options {
         timeout(time: 1, unit: 'DAYS')
         disableConcurrentBuilds()
@@ -24,7 +24,6 @@ pipeline {
         }
     }
     post {
-        agent any
         always {
             sh 'docker stop node-info-container'
             sh 'docker rm -f node-info-container'
