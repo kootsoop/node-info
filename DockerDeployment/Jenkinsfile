@@ -38,6 +38,7 @@ def showEnvironmentVariables() {
 def checkDocker() {
     sh 'docker -v > docker.txt'
     sh 'cat docker.txt'
+    sh 'ls /var/run/docker.sock'
 }
 def buildNodeInfo() {
     def mvnHome = tool 'M3'
